@@ -1,0 +1,46 @@
+<html>
+<head>
+    <style>
+        .odd
+        {
+            background-color: rgb(226, 226, 226);
+        }
+
+        tbody tr:hover
+        {
+            background-color: black;
+            color: white;
+        }
+        table
+        {
+            border-right: 1px solid black;
+            border-top: 1px solid black;
+            border-spacing: 0px;        
+            width:100%;
+            height: 100%;    
+        }
+        td{
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th><th>Caption</th><th>Data</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                <tr class="odd"><td>1</td> <td>Name</td><td>Mazhar karimi</td></tr>
+                <tr class="even"><td>2</td> <td>Email</td><td>layani.lamani@gmail.com</td></tr>
+                <tr><td>3</td><td colspan="2"></td></tr>
+        </tbody>
+        
+    </table>
+</body>
+</html>

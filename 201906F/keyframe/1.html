@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <style>
+        @keyframes movingbox {
+            0% {
+                background-color: red;
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+
+            25% {
+                background-color: blue;
+                margin-top: 100px;
+                margin-left: 100px;
+            }
+
+            50% {
+                background-color: green;
+                margin-top: 200px;
+                margin-left: 0px;
+                width: 400px;
+                transform: rotate(180deg)
+            }
+
+            75% {
+                background-color: goldenrod;
+                margin-top: 200px;
+                margin-left: 200px;
+                opacity: 0.2;
+            }
+
+            100% {
+                background-color: aqua;
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+        }
+
+        div
+        {
+            animation-name: movingbox;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            height: 200px;
+            width: 200px;
+            background-color: red;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="download.jpg" />
+    </div> 
+</body>
+
+</html>
