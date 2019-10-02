@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <style>
+
+        .menus
+        {
+            list-style: none;
+        }
+        .menus li 
+        {
+            float: left;
+            margin-left: 50px;         
+            background-color: rgb(145, 145, 145);          
+        }
+        
+        .drill>.menu {
+            opacity: 0;
+            height: 0px;
+        }
+
+        .drill:hover>.menu {
+            display: block;
+            background-color: rgb(196, 195, 195);
+            height: auto;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="menus">
+        <li class="item drill">
+            <label>Sindh</label>
+            <div class="menu">
+                <div class="item vertical">
+                    Karachi
+                </div>
+                <div class="item vertical">
+                    Hyderabad
+                </div>
+            </div>
+        </li>
+        <li class="item drill">
+            <label>Punjab</label>
+            <div class="menu">
+                <div class="item vertical">
+                    Lahore
+                </div>
+                <div class="item vertical">
+                    Multan
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</body>
+
+</html>
