@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+    <style>
+        #header1 {
+            height: 50px;
+            width: 100%;
+            background-color: blue;
+            position: fixed;
+            transition-property:all;
+            transition-duration: 1500ms;
+            transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);            
+
+        }
+
+        #header2 {
+            height: 50px;
+            width: 100%;
+            background-color: yellow;
+            position: fixed;
+            transition-property:all;
+            transition-duration: 1500ms;
+            transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+            
+        }
+ 
+        .show {
+            opacity: 1;
+           margin-top: 0px;
+        }     
+
+        .hide {
+
+           opacity: 0;
+           margin-top: -50px;
+
+        }
+
+        body {
+            height: 5000px;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script>
+
+        function classtog(e, c) {
+            if (e.classList.contains(c)) {
+                e.classList.remove(c);
+            }
+            else {
+                e.classList.add(c);
+            }
+        }
+
+        window.onscroll = function () {          
+
+            var h1 = document.getElementById("header1");
+            var h2 = document.getElementById('header2');
+
+            if (document.body.scrollTop > 500) {
+            
+            h2.classList.remove('hide');
+            h1.classList.add('show');
+            }
+           else if (document.body.scrollTop > 300) {
+                h1.classList.remove('show');
+                h1.classList.add('hide');
+            }                       
+            else if (document.body.scrollTop < 300  ) {
+                h2.classList.remove('show');
+                h2.classList.add('hide');
+                h1.classList.remove('hide');
+                h1.classList.add('show');
+            }                       
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="header1" class="show">
+        mazhar
+    </div>
+
+    <div id="header2" class="hide">
+        karimi
+    </div>
+</body>
+
+</html>
