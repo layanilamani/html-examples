@@ -9,67 +9,53 @@
             border: 1px solid black;
         }
     </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script>
 
-
-        function lensemove() {
-
-            var img = document.getElementById('img1');
-
-            var x = event.offsetX;
-            var y = event.offsetY;
-
-            // var pixelData = canvas.getContext('2d').getImageData(x, y, 200, 200).data;
-
-            var canvas1 = document.getElementById('myCanvas');
-            ctx = canvas1.getContext('2d');
-
-            Promise.all([            
-                createImageBitmap(img, x, y, 100, 100)            
-            ]).then(function (sprites) {                
-                ctx.drawImage(sprites[0], 0, 0);
-            });
-
-
-
-        }
-        function lense_out() {
-            // var lenseimg = document.getElementById('div1');
-            // lenseimg.remove();
-
-        }
-    </script>
 </head>
 
 <body>
-    <img src="download.jpg" id="img1" onmousemove="lensemove()" onmouseout="lense_out()" />
+
+    <button id="btnselect">
+        Select Image
+    </button>
+
+    <img src="download.jpg" id="img1" onmousemove="lensemove()" />
 
     <canvas width="200" height="200" id="myCanvas">
 
     </canvas>
     <input type="range" value="1" id="r" min="1" max="10" />
-    <script>
-        document.addEventListener('change', function () {
-            r = parseInt(document.getElementById('r').value);
-            var canvas1 = document.getElementById('myCanvas');
-            ctx = canvas1.getContext('2d');
-            ctx.scale(r, r);
-        });
-
-    </script>
 
     <button id="btn1">
         Save
     </button>
 
     <script>
-        document.getElementById('btn1').addEventListener('click', function () {
 
-            var canvas1 = document.getElementById('myCanvas');
+        function $(q) {
+            return document.querySelector(q);
+        }
+        function lensemove() {
+
+            var img = $('#img1');
+
+            var x = event.offsetX;
+            var y = event.offsetY;
+
+            // var pixelData = canvas.getContext('2d').getImageData(x, y, 200, 200).data;
+
+            var canvas1 = $('#myCanvas');
+            ctx = canvas1.getContext('2d');
+
+            Promise.all([
+                createImageBitmap(img, x, y, 100, 100)
+            ]).then(function (sprites) {
+                ctx.drawImage(sprites[0], 0, 0);
+            });
+        }
+
+        $('#btn1').addEventListener('click', function () {
+
+            var canvas1 = $('#myCanvas');
             ctx = canvas1.getContext('2d');
             var url = canvas1.toDataURL("image/jpg");
 
@@ -77,7 +63,30 @@
             a.href = url;
             a.download = "download.jpg";
             a.click();
-        })
+        });
+
+        $('#btnselect').addEventListener('click', function () {
+            var file = document.createElement('input');
+            file.type = "file";
+            file.onchange = function () {
+
+                var reader = new FileReader();
+                reader.onload = function (res) {
+                    $('#img1').src = res.target.result;
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            };
+
+            file.click();
+        });
+
+        document.addEventListener('change', function () {
+            r = parseInt($('#r').value);
+            var canvas1 = $('#myCanvas');
+            ctx = canvas1.getContext('2d');
+            ctx.scale(r, r);
+        });
 
     </script>
 </body>
