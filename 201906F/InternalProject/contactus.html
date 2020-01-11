@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.4.1.min.js">
-
     </script>
     <script src="js/bootstrap.min.js">
     </script>
@@ -19,57 +18,39 @@
         * {
             font-family: 'Roboto Condensed', sans-serif;
         }
-
         .secondnav {
             width: 100%;
         }
-
         .firstnav {
             width: 100%;
         }
-
         .secondnav div {
             justify-content: center;
         }
-
         #secondnav ul {
             list-style: none;
             width: 100%;
             display: flex;
-
         }
-
         footer ul {
             list-style: none;
         }
-
         footer ul li a {
             color: whitesmoke;
         }
-
-
-
         header ul li {
-
             margin-right: 30px;
         }
-
-       
-
         .section-heading .borderx {
-
             position: absolute;
             width: calc(100% - 20px);
         }
-
         .card-title {
             font-size: 28px;
         }
-
         .carousel-item img {
             width: 100%;
         }
-
         .section-heading .heading-text {
             background-color: white;
             z-index: 100;
@@ -78,41 +59,32 @@
             font-family: 'Indie Flower', cursive;
             margin-top: 15px;
         }
-
         .card .card-body {
             text-align: center;
         }
-
         .pet-card {
             border-bottom-right-radius: 15%;
             border-bottom-left-radius: 15%;
             margin-bottom: 15px;
             box-shadow: 0 4px 80px rgb(238, 226, 226), 0 0px 2px rgba(0, 0, 0, 0.5);
         }
-
         .pet-card .card-body {
             border-top: 1px solid gainsboro;
         }
-
         article {
             margin-top: 15px;
-            min-height: 500px;
-
         }
-
         /* 
         article .row div
         {
             align-content: center;
             text-align: center;
         } */
-
         footer {
             margin-top: 30px;
             height: 200px;
             background-color: rgba(91, 91, 91, 0.98);
         }
-
         /* footer::before
         {
             content: '';
@@ -124,20 +96,16 @@
             background:#fff;
             clip-path: polygon(100% 0, 0 100%, 100% 100%);
         } */
-
         footer .icon {
             width: 40px;
             margin-right: 15px;
         }
-
         footer .middle {
             text-align: center;
         }
-
         footer .container-fluid .row {
             padding-top: 20px;
         }
-
         #navbarSupportedContent {
             margin-left: 30px;
         }
@@ -183,7 +151,7 @@
                 <div class="collapse navbar-collapse navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
@@ -211,42 +179,75 @@
             </nav>
 
         </header>
-        <header class="col-12" id="header2">
 
-
-
-
-        </header>
-  
+       
         <article class="col-12">
+
+
+
+
+
             <div class="section-heading">
 
                 <div class="borderx">
                     <hr>
                 </div>
                 <div class="heading-text">
-                    Contact Us
+                    CONTACT US
                 </div>
             </div>
-            <form class="form">
+
+            <script>
+                function validate() {                  
+                    var name = document.getElementById('name').value;
+
+                    var re = new RegExp(/^[a-zA-Z\s]{3,50}$/);
+                    var result = re.test(name);
+
+                    if (result == false) {
+                        document.getElementById("namelbl").innerHTML = "tumhara naame galat hay.";
+                        return false;
+                    }
+                    else
+                    {
+                        document.getElementById("namelbl").innerHTML = "";
+                    }
+
+                    
+                }
+            </script>
+
+            <form class="form" action="contactus.html" method="POST">
+
                 <div class="form-group">
                     <label>Name</label>
-                    <input  class="form-control"  type="text" />
+                    <input type="text" id="name" required="true" class="form-control" />
+                    <label id="namelbl">
+                            
+                    </label>
                 </div>
+
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" type="email" />
+                    <input type="email" id="email" required class="form-control" />
                 </div>
+
                 <div class="form-group">
-                    <label>Messag</label>
-                    <input   class="form-control" type="text" />
+                    <label>Message</label>
+                    <input type="text" id="message" required class="form-control" />
                 </div>
+
                 <div class="form-group">
-                    <button onclick="alert('thank you')" class="btn btn-primary btn-info">
-                        Send
-                    </button>
+                    <input type="submit" onclick="validate();" class="btn btn-primary btn-info" value="Contact Us" />
                 </div>
+
             </form>
+
+            <div>
+                You can also send email us at <span> <a href="mailto:layani.lamani@gmail.com&subject=testing">layani.lamani@gmail.com</a> </span>
+            </div>
+            
+ 
         </article>
         <footer class="col-12   ">
             <div class="container-fluid">
