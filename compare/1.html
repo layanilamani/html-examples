@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Comparison </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="../images/fav.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/styling.css" />
+
+    <script src="json.js">
+    </script>
+
+    <script>
+     function search(keyword, resultdiv, resultul, box) {
+
+            var html = '';
+
+            var resultdiv = document.getElementById(resultdiv);
+            var resultul = document.getElementById(resultul);
+
+            var items = 0;
+            for (let i = 0; i < JSONString.length; i++) {
+                const Product = JSONString[i];
+
+                if (Product.Name.toLowerCase().startsWith(keyword.value.toLowerCase())) {
+                    html += '<li onclick=\'showproduct("'+keyword.id+'", "' + Product.Model + '",'+box+')\'>' + Product.Name + '</li> ';
+
+                    items++;
+                }
+            }
+
+            if (items == 0) {
+                html = "<span>Sorry, no result found</span>";
+            }
+
+            resultul.innerHTML = html;
+            resultdiv.style.display = "block";
+        }
+
+        function showproduct(tb, id, box) {
+
+
+            for (let i = 0; i < JSONString.length; i++) {
+                const Product = JSONString[i];
+
+                if (Product.Model == id) {
+
+                    document.getElementById(tb).value = Product.Name;
+
+                    document.getElementById('resultdiv' + box).style.display = "none";
+                    document.getElementById('name' + box).innerHTML = Product.Name;
+                    document.getElementById('color' + box).innerHTML = Product.Color;
+                    document.getElementById('size' + box).innerHTML = Product.Size;
+
+                    document.getElementById('model' + box).innerHTML = Product.Model;
+                    document.getElementById('price' + box).innerHTML = Product.Price;
+
+
+                    document.getElementById('image' + box).src = Product.Images;
+
+                }
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <div class="container mt-5 mb-5">
+        <h3 class="text-center"> COMPARISON TAB </h3>
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-5 mb-5">
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+                <input onkeyup="search(this, 'resultdiv1', 'resultul1',1)" type="input" class="form-control input-lg"
+                    id="txt-search1" placeholder="Search Product" />
+                <div id="resultdiv1"
+                    style="background-color: gray; width: 200px; min-height: 100px; position: absolute; z-index: 200; display: none; cursor: pointer;">
+                    <ul id="resultul1">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+                <input onkeyup="search(this, 'resultdiv2', 'resultul2',2)" type="input" class="form-control input-lg"
+                    id="txt-search2" placeholder="Search Product" />
+                <div id="resultdiv2"
+                    style="background-color: gray; width: 200px; min-height: 100px; position: absolute; z-index: 200; display: none; cursor: pointer;">
+                    <ul id="resultul2">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+
+                <input onkeyup="search(this, 'resultdiv3', 'resultul3',3)" type="input" class="form-control input-lg"
+                    id="txt-search3" placeholder="Search Product" />
+                <div id="resultdiv3"
+                    style="background-color: gray; width: 200px; min-height: 100px; position: absolute; z-index: 200; display: none; cursor: pointer;">
+                    <ul id="resultul3">
+
+                    </ul>
+                </div>
+
+            </div>
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-2">
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center">
+                <img id="image1" src="../images/example.jpg" alt="Loading-image-not-found" class="img-fluid" />
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center">
+                <img id="image2" src="../images/example.jpg" alt="Loading-image-not-found" class="img-fluid" />
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center">
+                <img id="image3" src="../images/example.jpg" alt="Loading-image-not-found" class="img-fluid" />
+            </div>
+
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-5">
+                <label> Name </label>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+                <p id="name1">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+                <p id="name2">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-5">
+                <p id="name3">None</p>
+            </div>
+
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-3">
+                <label> Color </label>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="color1">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="color2">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="color3">None</p>
+            </div>
+
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-3">
+                <label> Size </label>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="size1">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="size2">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="size3">None</p>
+            </div>
+
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-3">
+                <label> Model </label>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="model1">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="model2">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="model3">None</p>
+            </div>
+
+        </div> <!-- row end -->
+
+        <div class="row">
+            <!-- row -->
+
+            <!-- Col -->
+            <div class="col-sm-4 col-md-3 col-lg-3 text-center mt-3">
+                <label> Price </label>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="price1">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3">
+                <p id="price2">None</p>
+            </div>
+            <div class="col-sm-8 col-md-3 col-lg-3 text-center mt-3 mb-5">
+                <p id="price3">None</p>
+            </div>
+
+        </div> <!-- row end -->
+
+    </div> <!-- container end -->
+
+    <!-- Bootstrap and java online link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- <script src="../javascript/cal-jquery.js"></script> -->
+    <!-- <script src="../javascript/functions.js"></script> -->
+
+</body>
+
+</html>
